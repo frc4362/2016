@@ -17,7 +17,6 @@ import org.usfirst.frc.team4362.robot.commands.ShiftUp;
 import org.usfirst.frc.team4362.robot.commands.Shoot;
 import org.usfirst.frc.team4362.robot.commands.SwitchCamera;
 import org.usfirst.frc.team4362.robot.commands.TimedShoot;
-import org.usfirst.frc.team4362.robot.commands.TurnToStart;
 import org.usfirst.frc.team4362.robot.commands.auton.CorrectAndShoot;
 import org.usfirst.frc.team4362.robot.commands.auton.DelayedShoot;
 
