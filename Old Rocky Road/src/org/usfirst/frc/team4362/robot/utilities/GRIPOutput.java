@@ -44,4 +44,5 @@ public class GRIPOutput {
     public NetworkTable getTable(){
     	return table;
     }
+    
 }

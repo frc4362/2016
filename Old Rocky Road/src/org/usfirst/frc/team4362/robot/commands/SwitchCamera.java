@@ -28,4 +28,5 @@ public class SwitchCamera extends Command {
 
     protected void interrupted() {
     }
+    
 }

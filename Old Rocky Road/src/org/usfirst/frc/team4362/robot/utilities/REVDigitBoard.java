@@ -38,9 +38,9 @@ public class REVDigitBoard {
 		buttonB = new DigitalInput(20);
 		pot = new AnalogInput(3);
 		
-		byte[] osc = new byte[1];
-	 	byte[] blink = new byte[1];
-	 	byte[] bright = new byte[1];
+		byte[] osc = new byte[1],
+			   blink = new byte[1],
+			   bright = new byte[1];
 	 	osc[0] = (byte)0x21;
 	 	blink[0] = (byte)0x81;
 	 	bright[0] = (byte)0xEF;

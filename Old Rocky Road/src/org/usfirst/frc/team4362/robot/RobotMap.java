@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4362.robot;
 
-import edu.wpi.first.wpilibj.SPI.Port;
-
 public final class RobotMap {
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class AimDown extends Command {
 
-	boolean x;
+	private boolean x;
 	
     public AimDown() {
     	requires(Robot.head);
@@ -17,7 +17,6 @@ public class AimDown extends Command {
     }
 
     protected void execute() {
-    	//Robot.light.relay.set(Value.kReverse);
     	Robot.head.aimDown();
     }
 

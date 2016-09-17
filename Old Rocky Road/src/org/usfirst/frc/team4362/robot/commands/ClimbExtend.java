@@ -48,8 +48,6 @@ public class ClimbExtend extends Command {
 	    	}else if(currentPos <= targetPos){
 	    		climbMotor1.set(0);
 	    	}
-	    	/*Logger.getInstance().put("CLIMBER TARGET", targetPos);
-	    	Logger.getInstance().put("CLIMBER POSITION", currentPos);*/
     	}
     }
 

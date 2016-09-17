@@ -28,28 +28,11 @@ public class OI {
 	public Joystick rightStick;
 	public Joystick controller;
 
-	public Button shiftUpButton;
-	public Button shiftDownButton;
-
-	public Button aimUpButton;
-	public Button aimDownButton;
-
-	public Button slideUpButton;
-	public Button slideDownButton;
-
-	public Button kickButton;
-
-	public Button armButton;
-
-	public Button extendClimbButton;
-	public Button retractClimbButton;
-
-	public Button highGoalShotButton;
-	public Button lowGoalShotButton;
-
-	public Button aimBotButton;
-
-	public Button switchCameraButton;
+	public Button shiftUpButton, shiftDownButton, aimUpButton,
+		aimDownButton, slideUpButton, slideDownButton, 
+		kickButton, armButton, extendClimbButton,
+		retractClimbButton, highGoalShotButton, lowGoalShotButton,
+		aimBotButton, switchCameraButton;
 
 	public OI(){
 		leftStick = new Joystick(RobotMap.Joysticks.left);

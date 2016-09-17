@@ -28,5 +28,5 @@ public class Slider extends Subsystem {
     		up();
     	}
     }
+    
 }
-

@@ -12,8 +12,8 @@ public class DriveDistance extends Command {
 	int distance;
 	double speed;
 	
-	Side left = Robot.driveTrain.Left;
-	Side right = Robot.driveTrain.Right;
+	Side left = Robot.driveTrain.Left,
+		 right = Robot.driveTrain.Right;
 	
     public DriveDistance(int distance) {
     	this(distance, 0.25);

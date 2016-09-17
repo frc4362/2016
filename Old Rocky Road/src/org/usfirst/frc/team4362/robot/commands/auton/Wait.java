@@ -7,9 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Wait extends Command {
 
 	int delay;
-
 	boolean finished;
-
 	long endTime;
 
     public Wait(int milliseconds) {

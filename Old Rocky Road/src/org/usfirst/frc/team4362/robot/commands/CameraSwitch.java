@@ -13,13 +13,11 @@ public class CameraSwitch extends Command {
  	private Image frame;
  	private CameraServer server;
  	
- 	public CameraSwitch()
- 	{
+ 	public CameraSwitch() {
  		camChase = NIVision.IMAQdxOpenCamera("cam1", NIVision.IMAQdxCameraControlMode.CameraControlModeController);
  	}
  	
- 	public void initialize()
- 	{
+ 	public void initialize() {
         curCam = camChase;
         frame = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
         
@@ -30,18 +28,15 @@ public class CameraSwitch extends Command {
 		NIVision.IMAQdxStartAcquisition(curCam);
  	}
  	
- 	public void execute()
- 	{
+ 	public void execute() {
  		updateCam();
  	}
  	
-	public void end() 
-	{ 
+	public void end() { 
 		NIVision.IMAQdxStopAcquisition(curCam); 
 	}
 
-	public void updateCam()
-	{
+	public void updateCam() {
 		NIVision.IMAQdxGrab(curCam, frame, 1);
 	    server.setImage(frame);
 	}

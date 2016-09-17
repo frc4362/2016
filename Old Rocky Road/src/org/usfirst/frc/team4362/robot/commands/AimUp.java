@@ -17,7 +17,6 @@ public class AimUp extends Command {
     }
 
     protected void execute() {
-    	//Robot.light.relay.set(Value.kReverse);
     	Robot.head.aimUp();
     }
 

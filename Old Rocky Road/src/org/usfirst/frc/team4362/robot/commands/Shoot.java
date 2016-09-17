@@ -63,6 +63,7 @@ public class Shoot extends Command {
     	talon1.set(targetSpeed);
     	talon2.set(targetSpeed);
     	intake.set(-intakeSpeed);
+    	
     	/*Logger.getInstance().put("rightRPM", talon1.getSpeed()); //TODO maybe reversed? test
     	Logger.getInstance().put("leftRPM", talon2.getSpeed());*/
     }

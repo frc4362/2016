@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.AnalogInput;
 
 public class DriveTrain extends Subsystem {
 	
-	public Side Left = new Side(RobotMap.CANTalon.left, RobotMap.Encoder.left, false, "Left");
-	public Side Right = new Side(RobotMap.CANTalon.right, RobotMap.Encoder.right, true, "Right");
+	public Side Left = new Side(RobotMap.CANTalon.left, RobotMap.Encoder.left, false, "Left"),
+				Right = new Side(RobotMap.CANTalon.right, RobotMap.Encoder.right, true, "Right");
 	
 	public Compressor compressor = new Compressor();
 	public DoubleSolenoid shifter = new DoubleSolenoid(RobotMap.Solenoid.shifter[0], 

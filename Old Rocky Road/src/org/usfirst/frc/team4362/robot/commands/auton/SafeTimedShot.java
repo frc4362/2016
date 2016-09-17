@@ -21,14 +21,7 @@ public class SafeTimedShot extends TimedShoot {
     	super.initialize();
     	double[] shootValues = GRIPOutput.getInstance().getTable().getNumberArray("centerX", new double[]{});
     	run = shootValues.length > 0;
-    	/*if(shootValues.length == 0){
-    		run = false;
-    	}else{
-    		double v = shootValues[0] - Robot.imageCenterRes;
-    		run = v < 3 && v > -3; 
-    	}*/
     	SmartDashboard.putBoolean("should shoot", run);
-    	//SmartDashboard.putString("shoot command values", arrayToString(shootValues));
     }
 
     protected void execute() {
@@ -48,16 +41,17 @@ public class SafeTimedShot extends TimedShoot {
 		if(shootValues.length == 0){
 			return "[]";
 		}
-		
+
 		for(double elem : shootValues){
 			ret.append(String.valueOf(elem));
 			ret.append(", ");
 		}
-		
+
 		ret.deleteCharAt(ret.length() - 1);
 		ret.deleteCharAt(ret.length() - 1);
 		ret.append(']');
 		
 		return ret.toString();
 	}
+	
 }

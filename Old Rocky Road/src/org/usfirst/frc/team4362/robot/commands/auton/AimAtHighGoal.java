@@ -9,11 +9,8 @@ public class AimAtHighGoal extends DriveTurn {
     }
 
     protected void initialize() {
-    	//degrees = Robot.getDegreesFromTower();
-    	/*startpoint = 0;
-    	endpoint = 1;*/
     	this.degrees = Robot.getDegreesFromTower();
     	super.initialize();
-    	//Logger.getInstance().put("THIS IS THE DISTANCE FROM THE TOWER", this.degrees);
     }
+    
 }

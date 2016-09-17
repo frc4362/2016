@@ -29,11 +29,6 @@ public class DriveTurn extends Command {
     	setBase(this.degrees);
     	this.startpoint = Robot.gyro.getRawAngle();
     	this.endpoint = startpoint + degrees;
-    	
-    	/*Logger.getInstance().put("THIS IS THE STARTPOINT", startpoint);
-    	Logger.getInstance().put("THIS IS THE ENDPOINT", endpoint);
-    	Logger.getInstance().put("THIS IS THE DEGREES", degrees);
-    	Logger.getInstance().put("THIS IS THE BASE", base);*/
     }
 
     protected void execute() {

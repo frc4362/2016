@@ -23,8 +23,5 @@ public class Auton_DriveForward extends CommandGroup {
 
     	addSequential(new Wait(1000));
     }
-
-    public Auton_DriveForward(boolean raise){
-    	this(165, raise);
-    }
+    
 }

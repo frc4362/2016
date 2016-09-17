@@ -25,9 +25,7 @@ import org.usfirst.frc.team4362.robot.subsystems.Light;
 import org.usfirst.frc.team4362.robot.subsystems.Slider;
 import org.usfirst.frc.team4362.robot.utilities.AutonPreset;
 import org.usfirst.frc.team4362.robot.utilities.GRIPOutput;
-//import org.usfirst.frc.team4362.robot.utilities.Logger;
 import org.usfirst.frc.team4362.robot.utilities.REVDigitBoard;
-import org.usfirst.frc.team4362.robot.utilities.TowerDistanceThread;
 
 import com.ni.vision.NIVision;
 import com.ni.vision.NIVision.Image;
@@ -56,15 +54,6 @@ public class Robot extends IterativeRobot {
 	public static boolean rearCam = true;
 	public static USBCamera camFront, camBack;
 
-	/*static TowerDistanceThread towerDistanceRunnable = new TowerDistanceThread();
-	public static Thread towerDistanceThread = new Thread(towerDistanceRunnable);
-	static {
-		towerDistanceThread.start();
-	}*/
-	
-    //public GRIPOutput networkTable = GRIPOutput.getInstance();
-    //public static Map<String, Object> gripProperties = new HashMap<String, Object>();
-
 	public static boolean isAimingAtTower;
 	public static OI oi;
 
@@ -76,18 +65,18 @@ public class Robot extends IterativeRobot {
     CameraStreamingThread cst;
 
     // angles are 40 35 20 -15 -20
-    // new angles are 30 20 10 0 -10
+    // new angles are 30 20 0 0 -10
 
     AutonPreset[] autonPresets = new AutonPreset[]{
         new AutonPreset("work", new Auton_HighGoal(0, 0, true)),
     	new AutonPreset("dead", new Auton_DoNothing(), "does nothing"),
     	new AutonPreset("pos1", new Auton_HighGoal(120, 30, false)),
-    	new AutonPreset("pos2", new Auton_HighGoal(110, 20, true)),
-    	new AutonPreset("pos3", new Auton_HighGoal(110, 20, true)),
-    	new AutonPreset("pos4", new Auton_HighGoal(110, 0, true)),
-    	new AutonPreset("pos5", new Auton_HighGoal(110, -10, true)),
-    	new AutonPreset("rise", new Auton_DriveForward(true), "raises the head and drives forward"),
-    	new AutonPreset("fall", new Auton_DriveForward(false), "lowers the head and drives forward"),
+    	new AutonPreset("pos2", new Auton_HighGoal(120, 20, true)),
+    	new AutonPreset("pos3", new Auton_HighGoal(120, 0, true)),
+    	new AutonPreset("pos4", new Auton_HighGoal(120, 0, true)),
+    	new AutonPreset("pos5", new Auton_HighGoal(120, -10, true)),
+    	new AutonPreset("rise", new Auton_DriveForward(165, true), "raises the head and drives forward"),
+    	new AutonPreset("fall", new Auton_DriveForward(165, false), "lowers the head and drives forward"),
     	new AutonPreset("snek", new Auton_SpyBox(5000), "does snekky things and scores a high goal"),
     	new AutonPreset("turn", new Auton_Turn(90), "turns 90 degrees"),
     };
@@ -100,8 +89,6 @@ public class Robot extends IterativeRobot {
 		gyro.calibrate();
 
 		driveTrain.shiftDown();
-
-    	//light.relay.set(Value.kReverse);
 
     	Image img = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
     	CameraServer camServer = CameraServer.getInstance();
@@ -131,8 +118,6 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
-    	//gyro.calibrate();
-
         autonomousCommand = selectedAuton.command;
         if (autonomousCommand != null) autonomousCommand.start();
     }
@@ -149,32 +134,11 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopPeriodic() {
-    	//gripProperties = networkTable.getProperties();
-
-    	//logStuff();
-
-    	//SmartDashboard.putNumber("Degrees from the Tower", towerDistanceRunnable.get());
-    	
-        Scheduler.getInstance().run();
-
-        /*if(oi.controller.getRawButton(RobotMap.ControllerButton.START)){
-        	rearCam = !rearCam;
-        }*/
+    	Scheduler.getInstance().run();
     }
 
     public void testPeriodic() {
         LiveWindow.run();
-    }
-
-    public void logStuff(){
-    	/*Logger.getInstance().put("getVoltage", 			   PDP.getVoltage());
-    	Logger.getInstance().put("Compressor Current", 	   driveTrain.compressor.getCompressorCurrent());
-    	Logger.getInstance().put("Pressure", 			   driveTrain.getPressure());
-    	Logger.getInstance().put("Raw gyro output", 	   gyro.getRawAngle());
-    	Logger.getInstance().put("Gyro output", 		   gyro.getAngle());
-    	Logger.getInstance().put("Light Value", light.relay.get());
-
-    	Logger.getInstance().displayLog();*/
     }
 
     /**
