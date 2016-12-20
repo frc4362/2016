@@ -38,26 +38,26 @@ import edu.wpi.first.wpilibj.vision.USBCamera;
 @SuppressWarnings("unused")
 public class Robot extends IterativeRobot {
 
-	int selectedAutonIndex = 0,
-		change = 0,
-		lastChange = 0;
+    int selectedAutonIndex = 0,
+    	change = 0,
+	lastChange = 0;
 
-	public static final PowerDistributionPanel PDP = new PowerDistributionPanel();
-	public static final REVDigitBoard digitBoard = new REVDigitBoard();
-	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final Climber climber = new Climber();
-	public static final Slider slider = new Slider();
-	public static final Light light = new Light();
-	public static final Head head = new Head();
-	public static final Gyro gyro = new Gyro();
+    public static final PowerDistributionPanel PDP = new PowerDistributionPanel();
+    public static final REVDigitBoard digitBoard = new REVDigitBoard();
+    public static final DriveTrain driveTrain = new DriveTrain();
+    public static final Climber climber = new Climber();
+    public static final Slider slider = new Slider();
+    public static final Light light = new Light();
+    public static final Head head = new Head();
+    public static final Gyro gyro = new Gyro();
 
-	public static boolean rearCam = true;
-	public static USBCamera camFront, camBack;
+    public static boolean rearCam = true;
+    public static USBCamera camFront, camBack;
 
-	public static boolean isAimingAtTower;
-	public static OI oi;
+    public static boolean isAimingAtTower;
+    public static OI oi;
 
-	AutonPreset selectedAuton;
+    AutonPreset selectedAuton;
     Command autonomousCommand = null;
     SendableChooser chooser;
     
@@ -86,36 +86,36 @@ public class Robot extends IterativeRobot {
     	
     	oi = new OI();
 
-		gyro.calibrate();
+	gyro.calibrate();
 
-		driveTrain.shiftDown();
+	driveTrain.shiftDown();
 
     	Image img = NIVision.imaqCreateImage(NIVision.ImageType.IMAGE_RGB, 0);
     	CameraServer camServer = CameraServer.getInstance();
 
-	}
+    }
 
     public void disabledInit(){
     	//new Thread(cst).interrupt();
     }
 
-	public void disabledPeriodic() {
+    public void disabledPeriodic() {
 
-		// get what it should change the selection by
-		// if both buttons are pressed, it's evaluated to NOT CHANGE
-		// decrement if B is pressed, increment if A is pressed
-		change = (digitBoard.getButtonA() ? 1 : 0) + (digitBoard.getButtonB() ? -1 : 0);
+	// get what it should change the selection by
+	// if both buttons are pressed, it's evaluated to NOT CHANGE
+	// decrement if B is pressed, increment if A is pressed
+	change = (digitBoard.getButtonA() ? 1 : 0) + (digitBoard.getButtonB() ? -1 : 0);
 
-		// change the selection if the change is not equal to what it was last cycle
-		// and normalize it to a relevant value
-		selectedAutonIndex += change != lastChange ? change : 0;
-		selectedAuton = autonPresets[Math.abs(selectedAutonIndex % autonPresets.length)];
-		digitBoard.display(selectedAuton.name);
+	// change the selection if the change is not equal to what it was last cycle
+	// and normalize it to a relevant value
+	selectedAutonIndex += change != lastChange ? change : 0;
+	selectedAuton = autonPresets[Math.abs(selectedAutonIndex % autonPresets.length)];
+	digitBoard.display(selectedAuton.name);
 
-		lastChange = change;
+	lastChange = change;
 
-		Scheduler.getInstance().run();
-	}
+	Scheduler.getInstance().run();
+    }
 
     public void autonomousInit() {
         autonomousCommand = selectedAuton.command;
