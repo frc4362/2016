@@ -25,11 +25,9 @@ public class Side {
 		
 		this.encoder = new Encoder(encoders[0], encoders[1], inverted, EncodingType.k4X);
 		this.encoder.setDistancePerPulse(RobotMap.distancePerPulse);
-		
-		if(inverted){
-			motor1.setInverted(true);
-			motor2.setInverted(true);
-		}
+
+		motor1.setInverted(inverted);
+		motor2.setInverted(inverted);
 		
 		this.inverted = inverted;
 		this.motorName = name.concat(" Motor");
